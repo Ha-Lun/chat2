@@ -18,13 +18,11 @@ public class ChatParticipant implements KeyListener, ActionListener
     ObjectInput objectInput;
     ObjectOutput objectOutput;
     JFrame frame;
-    String name;
 
-    ChatParticipant(Socket socket, String name) throws IOException
+    ChatParticipant(Socket socket) throws IOException
     {
-        this.name = name;
-        createStreams(socket);
         createFrame();
+        createStreams(socket);
         streamSearcher();
     }
     private void streamSearcher()
@@ -63,7 +61,7 @@ public class ChatParticipant implements KeyListener, ActionListener
     }
     private void createFrame()
     {
-        frame = new JFrame("Message " + name);
+        frame = new JFrame("Message");
         ChatWindow chatWindow = createChat();
         //frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.add(chatWindow);

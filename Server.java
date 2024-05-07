@@ -6,12 +6,7 @@ public class Server {
     static ServerSocket serverSocket;
     Server (int port) throws IOException, ClassNotFoundException {
         serverSocket = new ServerSocket(port);
-        Socket socket = serverSocket.accept();
+        new ServerWindow(serverSocket, port);
         System.out.println("Server started");
-        System.out.println("Client connected");
-        serverSocket.close();
-        System.out.println("Socket closed");
-        new ChatParticipant(socket, "");
-
     }
 }
